@@ -1,0 +1,29 @@
+#listticker{
+	height:210px;
+	width:210px;
+	overflow:hidden;
+	border:solid 1px #DEDEDE;
+	background-color:#FFF;
+	padding-bottom: 13px;
+}
+#listticker li{
+	border:0; margin:0; padding:0; list-style:none;
+}
+
+#listticker li{
+	height:100px;
+	padding:5px;
+	list-style:none;
+}
+#listticker .news-text{
+	display:block;
+	font-size:12px;
+	margin-top:0px;
+	margin-left:10px;
+}
+#listticker img{
+	float:left;
+	margin-right:10px;
+	padding:2px;
+	border:solid 1px #DEDEDE;
+}	

@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="alanrm82" />
+<title>Login Member - {judul}</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" media="all" href="css/chat.css" />
+<link rel="stylesheet" href="css/jquery.tabs.css" type="text/css" media="print, projection, screen">
+<link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+<link href="css/facebox.css" media="screen" rel="stylesheet" type="text/css">
+
+        <!-- Additional IE/Win specific style sheet (Conditional Comments) -->
+        <!--[if lte IE 7]>
+        <link rel="stylesheet" href="css/jquery.tabs-ie.css" type="text/css" media="projection, screen">
+        <![endif]-->
+{head}
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/chat.js"></script>
+
+<script type="text/javascript">
+	function lookup(inputString) {
+		if(inputString.length == 0) {
+			$('#suggestions').hide();
+		} else {
+			$.post("../member/listmemberall.php", {queryString: ""+inputString+""}, function(data){
+				if(data.length >0) {
+					$('#suggestions').show();
+					$('#autoSuggestionsList').html(data);
+				}
+			});
+		}
+	} // lookup
+	
+	function fill(thisValue) {
+		$('#inputString').val(thisValue);
+		setTimeout("$('#suggestions').hide();", 500);
+        
+	}
+</script>
+
+
+<script type="text/javascript">
+function clearText(field){
+	if (field.defaultValue == field.value) {
+		field.value = '';
+		field.style.height='36px';
+		}
+	else if (field.value == '') { 
+	field.value = field.defaultValue;
+	field.style.height='20px';
+	}
+
+}
+function clearText2(field){
+	if (field.defaultValue == field.value) {
+		field.value = '';
+		}
+	else if (field.value == '') { 
+	field.value = field.defaultValue;
+	}
+
+}
+</script>
+<script>
+$(document).ready(function(){
+
+$('[rel=tooltip]').bind('mouseover', function(){
+		
+ if ($(this).hasClass('ajax')) {
+	var ajax = $(this).attr('ajax');	
+			
+  $.get(ajax,
+  function(theMessage){
+$('<div class="tooltip">'  + theMessage + '</div>').appendTo('body').fadeIn('fast');});
+
+ 
+ }else{
+			
+	    var theMessage = $(this).attr('content');
+	    $('<div class="tooltip">' + theMessage + '</div>').appendTo('body').fadeIn('fast');
+		}
+		
+		$(this).bind('mousemove', function(e){
+			$('div.tooltip').css({
+				'top': e.pageY - ($('div.tooltip').height() / 2) - 5,
+				'left': e.pageX + 15
+			});
+		});
+	}).bind('mouseout', function(){
+		$('div.tooltip').fadeOut('fast', function(){
+			$(this).remove();
+		});
+	});
+    
+    
+    
+    $('.search_box').css("color","#777777");
+    $('.search_box').focus(function(){
+        if($('.search_box').val() == 'Pencarian Semua member')
+        {
+            $('.search_box').val("");
+        }
+        $('.search_box').css("color","#000000");
+    });
+    $('.search_box').blur(function() {
+        if ($('.search_box').val() == '')
+        {
+            $('.search_box').val('Pencarian Semua member');
+            $('.search_box').css("color","#777777");
+        }
+    });
+    
+    
+ });
+
+</script>
+
+<style type="text/css">
+
+	
+	h3 {
+		margin: 0px;
+		padding: 0px;	
+	}
+
+	.suggestionsBox {
+		position:absolute;
+        margin-top: 0.3em;
+		width: 283px;
+		background-color: #627AAD;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+		border: 0px solid #627AAD;	
+		color: #fff;
+        
+	}
+	
+	.suggestionList {
+		margin: 0px;
+		padding: 0px;
+	}
+	.suggestionList li {
+		
+		margin: 0px 0px 3px 0px;
+		padding: 3px;
+		cursor: pointer;
+	}
+	.suggestionList li:hover {
+		background-color: #659CD8;
+	}
+	
+</style>
+</head>
+<body>
+<div id='container'>
+        <div id='header'>
+            <div id='header_wrapper'>
+                <div id='logo'>{judul}</div>
+                <div id='top_bar'>
+                    <div id='search'>
+                        <input class='search_box' type='text' name='keyword' value='Pencarian Semua member' id='inputstring' onkeyup='lookup(this.value);' onblur='fill();' name='keyword' autocomplete='off' />
+                            <div class='suggestionsBox' id='suggestions' style='display: none;z-index:1000'>
+                                <div class='suggestionList' id='autoSuggestionsList'>
+                                &nbsp;
+                                </div>
+                            </div>     
+                    </div>
+                    <div id='mbtnavbar'>
+                        <ul id="mbtnav">
+                        <li><a href="user.php" title="Kembali ke depan"> Depan</a></li>
+                        <li><a href="user.php?id=profil" title="Lihat Profil">Profil<!--[if gte IE 7]><!--></a><!--<![endif]-->
+                        <!--[if lte IE 6]><table><tr><td><![endif]-->
+                        	<ul>
+                        	<li><a href="user.php?id=editprofil" title="Perubahan Profil">Edit Profil</a></li>
+                            <li><a href="user.php?id=logprofil" title="Data log yang melihat profil anda">Log Profil</a></li>
+                        	<li><a href="user.php?id=customprofil" title="Perubahan Themes">Custom Themes</a></li>
+                        	</ul>
+                        <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                        </li>
+                        
+                        <li><a href="user.php?id=member" title="Lihat data semua member">Member<!--[if gte IE 7]><!--></a><!--<![endif]-->
+                        <!--[if lte IE 6]><table><tr><td><![endif]-->
+                        	<ul>
+                        	<li><a href="user.php?id=teman&ket=semua" title="Lihat data teman">Semua Teman</a></li>
+                            <li><a href="user.php?id=lihgroup" title="Lihat data group yang diikuti">Data Group</a></li>
+                        	</ul>
+                        <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                        </li>
+                        
+                        <li><a href="#">Pesan<!--[if gte IE 7]><!--></a><!--<![endif]-->
+                        <!--[if lte IE 6]><table><tr><td><![endif]-->
+                        	<ul>
+                        	<li><a href="user.php?id=pesan" title="Lihat pesan masuk">Pesan Masuk</a></li>
+                        	<li><a href="user.php?id=kirimpesan" title="Kirim pesan">Kirim Pesan</a></li>
+                        	</ul>
+                        <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                        </li>
+                        
+                        <li><a href="#">Fitur<!--[if gte IE 7]><!--></a><!--<![endif]-->
+                        <!--[if lte IE 6]><table><tr><td><![endif]-->
+                        	<ul>
+                            <li><a href="user.php?id=forum" title="Forum Diskusi">Diskusi</a></li>
+                        	<li><a href="user.php?id=infoalumni" title="Tambah informasi alumni">Info Alumni</a></li>
+                            <li><a href="user.php?id=tamartikel" title="Tambah Artikel baru">Kirim Artikel</a></li>
+                        	<li><a href="user.php?id=games" title="Lihat Games">Games</a></li>
+                        	</ul>
+                        <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                        </li>
+                        <li><a href="#">Download<!--[if gte IE 7]><!--></a><!--<![endif]-->
+                        <!--[if lte IE 6]><table><tr><td><![endif]-->
+                        	<ul>
+                        	<li><a href="../html/guru.php?id=materi" title="Lihat Materi Ajar" target="_blank">Materi Ajar</a></li>
+                        	<li><a href="../html/guru.php?id=soal" title="Lihat Materi Uji" target="_blank">Materi Uji</a></li>
+                        	</ul>
+                        <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                        </li>
+                        {menu}
+                        <li><a href="user.php?id=logout" title="Keluar dari sistem komunitas">Keluar</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div id='upper'>
+            <div id='upper_wrapper'>
+                {isi}
+            </div>
+        </div>
+        <div id='footer'>
+            <div class='left_footer'>{judul}</div>
+            <div class='right_footer'>Website engine's code is copyright © 2011 Tim Balitbang Depdiknas versi 3.5</div>
+        </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <meta name="author" content="alanrm82" />
+	<meta name="description" content="Template balitbang depdiknas"/>
+	<meta name="keywords" content="Sekolah,balitbang,depdiknas,sma,smk,alcob,smp,poencer"/>
+    <title>Selamat Datang di {nmsekolah}</title>
+
+    <script type="text/javascript" src="{path}script.js"></script>
+
+    <link rel="stylesheet" href="{path}style.css" type="text/css" media="screen" />
+    <!--[if IE 6]><link rel="stylesheet" href="{path}style.ie6.css" type="text/css" media="screen" /><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="{path}style.ie7.css" type="text/css" media="screen" /><![endif]-->
+
+<!-- script tambahan -->
+<style type="text/css">
+ #calendar_tooltip
+ {
+  position: absolute;
+  width: 130px;
+  border: 1px solid #FFFFFF;
+  padding: 7px;
+  background-color: #CCCCCC;
+  visibility: hidden;
+  z-index: 100;
+  filter: progid:DXImageTransform.Microsoft.Shadow(color=gray,direction=135);
+  font-size: 10px;
+  color: #000000;
+  font-family: MS Sans Serif, Tahoma, sans-serif;
+ }
+ .flashclass { /*sample CSS class added to image slideshow container*/
+width: 196px; /*a width should be defined for transition to work*/
+border: 0;
+padding: 2px;
+}
+.flashclass img{
+width:196px;
+}
+
+.highlight { 
+background-color: #DEDEDE; 
+}
+.normal { 
+}
+
+</style>
+<script type="text/javascript" src="../temp/transitionshow.js"></script>
+<script type="text/javascript">
+var behavior="TD"
+var ns6=document.getElementById&&!document.all
+var ie=document.all
+function changeto(e,color)
+{
+ source=ie? event.srcElement : e.target
+ if(source.tagName=="TABLE")
+ return
+ while(source.tagName!=behavior && source.tagName!="HTML")
+ source=ns6? source.parentNode : source.parentElement
+ if(source.style.backgroundColor!=color&&source.id!="ignore")
+ source.style.backgroundColor=color
+}
+function contains_ns6(master, slave) 
+{
+ while (slave.parentNode)
+ if ((slave = slave.parentNode) == master)
+ return true;
+ return false;
+}
+function changeback(e,originalcolor)
+{
+ if (ie&&(event.fromElement.contains(event.toElement)||source.contains(event.toElement)||source.id=="ignore")||source.tagName=="TABLE")
+ return
+ else if (ns6&&(contains_ns6(source, e.relatedTarget)||source.id=="ignore"))
+ return
+ if (ie&&event.toElement!=source||ns6&&e.relatedTarget!=source)
+ source.style.backgroundColor=originalcolor
+}
+function detailagen(mn)
+{
+window.open('../functions/agenda.php?kode='+mn,'Cek','width=300,height=90,resizable=no,scrollbars=no'); 
+
+}
+function daftar()
+{
+
+window.open('../member/daftar.php','Daftar Member'); 
+
+}
+
+</script>
+  <script>
+	function ws() {
+	  window.status='Done';
+	  cmd="ws()";
+	  timerTwo=window.setTimeout(cmd,0);
+    }
+	ws();
+  </script>
+  <script src="../Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+  <!-- script tambahan -->
+  <!-- terjemah aura cms-->
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+
+<script type="text/javascript">
+    google.load("language", "1");
+    function translate(lang) {
+		var source = document.getElementById("news").innerHTML;
+		var len = source.length;
+		var words = 500;
+		var foreigntext = "";
+
+		document.getElementById("translation").innerHTML = "";
+
+		for(i=0; i<=(len/words); i++) {
+			  google.language.translate (source.substr(i*words, words), "id", lang, function (result) {
+					if (!result.error) {
+					   document.getElementById("translation").innerHTML = 
+							document.getElementById("translation").innerHTML + result.translation;
+					 }
+			  });
+		}	
+		document.getElementById("news").style.display = 'none';		
+
+	 return false;
+	 }
+
+    function back() {
+		document.getElementById("translation").style.display='none';
+		document.getElementById("news").style.display = 'block';		
+	 return false;
+	 }
+</script>
+<!-- end-->
+</head>
+<body>
+<!-- script tambahan -->
+<div id="calendar_tooltip"></div>
+<script type="text/javascript">
+ var offsetxpoint=-60 
+ var offsetypoint=20 
+ var ie=document.all
+ var ns6=document.getElementById && !document.all
+ var enabletip=false
+ if (ie||ns6)
+ var tipobj=document.all? document.all["calendar_tooltip"] : document.getElementById? document.getElementById("calendar_tooltip") : ""
+ function ietruebody()
+  {
+   return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+  }
+ function ddrivetip(thetext, thecolor, thewidth)
+  {
+  if (ns6||ie)
+     {
+      if (typeof thewidth!="undefined") tipobj.style.width=thewidth+"px"
+      if (typeof thecolor!="undefined" && thecolor!="") tipobj.style.backgroundColor=thecolor
+      tipobj.innerHTML=thetext
+      enabletip=true
+      return false
+     }
+  }
+ function positiontip(e)
+  {
+   if (enabletip)
+      {
+       var curX=(ns6)?e.pageX : event.x+ietruebody().scrollLeft;
+       var curY=(ns6)?e.pageY : event.y+ietruebody().scrollTop;
+       var rightedge=ie&&!window.opera? ietruebody().clientWidth-event.clientX-offsetxpoint : window.innerWidth-e.clientX-offsetxpoint-20
+       var bottomedge=ie&&!window.opera? ietruebody().clientHeight-event.clientY-offsetypoint : window.innerHeight-e.clientY-offsetypoint-20
+       var leftedge=(offsetxpoint<0)? offsetxpoint*(-1) : -1000
+       if (rightedge<tipobj.offsetWidth)
+           tipobj.style.left=ie? ietruebody().scrollLeft+event.clientX-tipobj.offsetWidth+"px" : window.pageXOffset+e.clientX-tipobj.offsetWidth+"px"
+       else if (curX<leftedge)
+           tipobj.style.left="5px"
+       else
+           tipobj.style.left=curX+offsetxpoint+"px"
+           if (bottomedge<tipobj.offsetHeight)
+              tipobj.style.top=ie? ietruebody().scrollTop+event.clientY-tipobj.offsetHeight-offsetypoint+"px" : window.pageYOffset+e.clientY-tipobj.offsetHeight-offsetypoint+"px"
+           else
+              tipobj.style.top=curY+offsetypoint+"px"
+              tipobj.style.visibility="visible"
+      }
+  }
+ function hideddrivetip()
+  {
+   if (ns6||ie)
+      {
+       enabletip=false
+       tipobj.style.visibility="hidden"
+       tipobj.style.left="-1000px"
+       tipobj.style.backgroundColor=''
+       tipobj.style.width=''
+      }
+  }
+  document.onmousemove=positiontip
+</script>
+<!-- script tambahan -->
+    <div id="art-page-background-gradient"></div>
+    <div id="art-page-background-glare">
+        <div id="art-page-background-glare-image"></div>
+    </div>
+<div id="art-main">
+        <div class="art-Sheet">
+            <div class="art-Sheet-tl"></div>
+            <div class="art-Sheet-tr"></div>
+            <div class="art-Sheet-bl"></div>
+            <div class="art-Sheet-br"></div>
+            <div class="art-Sheet-tc"></div>
+            <div class="art-Sheet-bc"></div>
+            <div class="art-Sheet-cl"></div>
+            <div class="art-Sheet-cr"></div>
+            <div class="art-Sheet-cc"></div>
+            <div class="art-Sheet-body">
+                <div class="art-Header">
+{atas} <!-- atas konten-->
+                </div>
+                <div class="art-nav">
+ {menu}<!-- menu konten-->      	
+                </div>
+                <div class="art-contentLayout">
+                    <div class="art-sidebar1">
+                        {bahasa}  <!-- multibahasa-->
+						{kiri} <!-- kiri konten-->
+                    </div>
+                    
+                    {isi} <!-- tengah konten-->
+                </div>
+                
+                <div class="cleared"></div><div class="art-Footer">
+                    <div class="art-Footer-inner">
+                        <div class="art-Footer-text">
+                            <p>Copyright &copy; 2014. <a href="http://{nmweb}" >{nmweb}</a>. 
+	Website engine's code is copyright &copy; 2011 Tim Balitbang Kemdikbud versi 3.5.3 <br/>Tim Balitbang Kemdikbud</p>
+                        </div>
+                    </div>
+                    <div class="art-Footer-background"></div>
+                </div>
+        		<div class="cleared"></div>
+            </div>
+        </div>
+        <div class="cleared"></div>
+        <p class="art-page-footer"></p>
+    </div>
+    
+</body>
+</html>
